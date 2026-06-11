@@ -1,12 +1,38 @@
+It looks like GitHub stripped out all the line breaks when you pasted it. Here's a cleaned-up version with proper GitHub Markdown formatting.
+
 # County-Level Voter Participation Analysis (2020–2024)
 
 ## Overview
 
-This project examines changes in county-level voter participation between the 2020 and 2024 United States presidential elections.
+This project analyzes changes in county-level voter participation between the 2020 and 2024 U.S. Presidential Elections.
 
-Using publicly available election returns from the MIT Election Data and Science Lab (MEDSL) and county-level demographic and socioeconomic indicators from County Health Rankings, the analysis explores patterns associated with increases and decreases in electoral participation across U.S. counties.
+Using county-level election returns from the MIT Election Data and Science Lab (MEDSL) and demographic and socioeconomic indicators from County Health Rankings, the analysis explores patterns associated with increases and decreases in electoral participation across U.S. counties.
 
-The goal of the project is not to determine causation, but rather to identify meaningful relationships and trends that may help explain differences in voter participation at the county level.
+The goal of this project is not to determine causation, but rather to identify meaningful relationships and trends that may help explain differences in voter participation.
+
+---
+
+## Project Status
+
+🚧 **Work in Progress**
+
+### Current Progress
+
+* Data cleaning and preparation
+* County-level vote aggregation
+* Participation change calculations
+* Exploratory Data Analysis (EDA)
+* Correlation analysis
+* Regression analysis
+* Initial visualizations
+
+### Planned Additions
+
+* Geographic analysis
+* Additional model evaluation
+* Expanded findings and discussion
+* State-level comparisons
+* Final report
 
 ---
 
@@ -14,11 +40,11 @@ The goal of the project is not to determine causation, but rather to identify me
 
 This project seeks to answer the following questions:
 
-* How did voter participation change between the 2020 and 2024 presidential elections?
+* How did county-level vote totals change between 2020 and 2024?
 * Which counties experienced the largest increases in participation?
 * Which counties experienced the largest decreases in participation?
-* What county characteristics are associated with higher voter participation?
-* What county characteristics are associated with changes in participation over time?
+* What county characteristics are associated with voter participation?
+* What factors may help explain differences in participation across counties?
 
 ---
 
@@ -30,9 +56,9 @@ This project seeks to answer the following questions:
 
 Dataset:
 
-* County Presidential Returns (2000–2024)
+* County Presidential Election Returns (2000–2024)
 
-Variables used:
+Variables Used:
 
 * County FIPS Code
 * County Name
@@ -44,16 +70,34 @@ Variables used:
 
 **County Health Rankings**
 
-Variables used:
+#### Education
 
 * High School Completion
 * Some College
+
+#### Economic Opportunity
+
 * Median Household Income
 * Children in Poverty
+
+#### Community Stability
+
 * Homeownership
+
+#### Civic Access
+
 * Broadband Access
+
+#### Geography
+
 * Percent Rural
+
+#### Demographics
+
 * Percent Age 65 and Older
+
+#### Scale Control
+
 * Population
 
 ---
@@ -63,6 +107,7 @@ Variables used:
 * Python
 * Pandas
 * NumPy
+* Scikit-Learn
 * Matplotlib
 * Seaborn
 * Google Colab
@@ -74,27 +119,31 @@ Variables used:
 
 ### 1. Data Preparation
 
-Election results were aggregated to the county level using total presidential votes cast in each county.
+County election returns were aggregated to the county level using total votes cast.
 
 County FIPS codes were cleaned and standardized to ensure consistency across datasets.
 
 ### 2. Participation Change Calculation
 
-For each county:
+Two participation metrics were created.
 
-**Raw Vote Change**
+#### Raw Vote Change
 
-2024 Total Votes − 2020 Total Votes
+```text
+2024 Votes - 2020 Votes
+```
 
-**Percent Change**
+#### Percent Vote Change
 
-(2024 Votes − 2020 Votes) ÷ 2020 Votes
+```text
+(2024 Votes - 2020 Votes) / 2020 Votes
+```
 
-Both measures were analyzed because percentage change can exaggerate differences in counties with very small populations.
+Both measures are analyzed because percentage change can exaggerate differences in counties with small populations.
 
 ### 3. Exploratory Data Analysis
 
-The analysis included:
+The analysis includes:
 
 * Summary statistics
 * Distribution analysis
@@ -102,68 +151,166 @@ The analysis included:
 * County-level comparisons
 * Identification of counties with the largest increases and decreases in participation
 
-### 4. County Characteristics Analysis
+### 4. Statistical Modeling
 
-County-level demographic and socioeconomic variables were examined to identify relationships with voter participation.
+A multiple linear regression model was developed to explore which county characteristics were associated with changes in voter participation between 2020 and 2024.
+
+Predictor variables included:
+
+* High School Completion
+* Some College
+* Median Household Income
+* Children in Poverty
+* Homeownership
+* Broadband Access
+* Percent Rural
+* Percent Age 65 and Older
+* Population
+
+Features were standardized using StandardScaler prior to model fitting to allow coefficient comparison.
+
+Model performance was evaluated using R² and coefficient analysis.
+
+---
+
+# Visualizations
+
+## Distribution of County-Level Vote Change
+
+![Distribution of Vote Change](images/vote_change_distribution.png)
+
+*Figure 1. Distribution of county-level changes in vote totals between 2020 and 2024.*
+
+---
+
+## Correlation Matrix
+
+![Correlation Matrix](images/correlation_matrix.png)
+
+*Figure 2. Correlation matrix showing relationships between participation change and selected county characteristics.*
+
+---
+
+## Largest Percentage Increases
+
+![Largest Percentage Increases](images/largest_percentage_increases.png)
+
+*Figure 3. Counties with the largest percentage increases in vote totals between 2020 and 2024.*
+
+---
+
+## Largest Percentage Decreases
+
+![Largest Percentage Decreases](images/largest_percentage_decreases.png)
+
+*Figure 4. Counties with the largest percentage decreases in vote totals between 2020 and 2024.*
+
+---
+
+## Largest Raw Vote Increases
+
+![Largest Raw Increases](images/largest_raw_increases.png)
+
+*Figure 5. Counties with the largest raw increases in vote totals.*
+
+---
+
+## Largest Raw Vote Decreases
+
+![Largest Raw Decreases](images/largest_raw_decreases.png)
+
+*Figure 6. Counties with the largest raw decreases in vote totals.*
+
+---
+
+## Regression Coefficients
+
+![Regression Coefficients](images/regression_coefficients.png)
+
+*Figure 7. Standardized regression coefficients showing relationships between county characteristics and participation change.*
 
 ---
 
 ## Preliminary Findings
 
-### Participation Distribution
-
-Most counties experienced relatively small changes in voter participation between 2020 and 2024.
-
-The distribution was centered near zero, suggesting that participation levels remained relatively stable for many counties.
-
 ### Education
 
-Counties with higher levels of educational attainment tended to have higher voter participation.
+Counties with higher educational attainment generally exhibited stronger voter participation outcomes.
 
 ### Income
 
-Median household income showed a positive relationship with turnout.
+Median household income showed a positive relationship with participation.
 
 ### Poverty
 
-Counties with higher rates of child poverty tended to have lower voter participation.
+Counties with higher poverty rates generally exhibited lower participation.
 
 ### Broadband Access
 
-Broadband availability showed a moderate positive relationship with participation, suggesting that access to information and online resources may be associated with civic engagement.
+Broadband availability showed a moderate positive relationship with voter participation.
+
+### Population
+
+Population size alone appears to explain relatively little variation in participation changes.
 
 ---
 
 ## Limitations
 
-Several limitations should be considered:
-
 * Correlation does not imply causation.
-* County-level data may hide important local variation.
-* The analysis uses total votes cast as a proxy for participation rather than official turnout rates.
-* Some changes may reflect population growth, migration, or administrative factors rather than changes in voter behavior.
-* Additional years of data would provide a stronger basis for identifying long-term trends.
+* County-level data may conceal local variation.
+* Total votes cast are used as a proxy for participation.
+* Population growth may influence raw vote changes.
+* The analysis currently focuses on a single election cycle comparison.
+* The regression model is exploratory and not intended for prediction or causal inference.
 
 ---
 
-## Future Improvements
+## Future Work
 
-Planned enhancements include:
+Potential extensions include:
 
-* Regression modeling
-* State-level comparisons
+* Geographic mapping
+* State-level analysis
+* Multi-election trend analysis
 * Additional demographic variables
-* Geographic visualizations
-* Time-series analysis using earlier election cycles
-* Enhanced reporting and documentation
+* Election administration policy analysis
+* Public voter registration datasets
+* Absentee ballot analysis
+
+---
+
+## Repository Structure
+
+```text
+County-Level-Voter-Participation-Analysis/
+│
+├── README.md
+├── Explaining_County_Level_Voter_Participation_Changes.ipynb
+│
+├── images/
+│   ├── vote_change_distribution.png
+│   ├── correlation_matrix.png
+│   ├── largest_percentage_increases.png
+│   ├── largest_percentage_decreases.png
+│   ├── largest_raw_increases.png
+│   ├── largest_raw_decreases.png
+│   └── regression_coefficients.png
+│
+└── data/
+    ├── election_data.csv
+    └── county_health_rankings.csv
+```
 
 ---
 
 ## Author
 
-Melissa Hargis
+**Melissa Hargis**
 
-GitHub: https://github.com/Tamiyo22
+* GitHub: [https://github.com/Tamiyo22](https://github.com/Tamiyo22)
+* LinkedIn: [https://linkedin.com/in/melissa-hargis](https://linkedin.com/in/melissa-hargis)
+
 
 LinkedIn: https://linkedin.com/in/melissa-hargis
 
