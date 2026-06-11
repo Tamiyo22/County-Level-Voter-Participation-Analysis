@@ -1,4 +1,4 @@
-It looks like GitHub stripped out all the line breaks when you pasted it. Here's a cleaned-up version with proper GitHub Markdown formatting.
+
 
 # County-Level Voter Participation Analysis (2020–2024)
 
