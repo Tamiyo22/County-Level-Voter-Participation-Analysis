@@ -311,7 +311,3 @@ County-Level-Voter-Participation-Analysis/
 * GitHub: [https://github.com/Tamiyo22](https://github.com/Tamiyo22)
 * LinkedIn: [https://linkedin.com/in/melissa-hargis](https://linkedin.com/in/melissa-hargis)
 
-
-LinkedIn: https://linkedin.com/in/melissa-hargis
-
-Portfolio: https://melissahargis.netlify.app
